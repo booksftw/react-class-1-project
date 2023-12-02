@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
-function Test({ data }) {
+function TableRows({ data }) {
+  const dataIsAvailable = data.length > 0 // false
 
   return (
     <>
       <tr>
-        <td>{data[0].year}</td>
-        <td>{data[0].valueEndOfYear}</td>
-        <td>{data[0].interest}</td>
-        <td>{data[0].interest}</td>
-        <td>{data[0].annualInvestment}</td>
+        <td>{dataIsAvailable && data[0].year}</td> {/* Year Correct  */}
+        <td>{dataIsAvailable && data[0].valueEndOfYear}</td> {/* Value end of year Correct */}
+        <td>{dataIsAvailable && data[0].interest}</td> {/*Interest Correct */}
+        <td>{dataIsAvailable && data[0].interest}</td> {/* total earned all interest added up */}
+        <td>{dataIsAvailable && data[0].annualInvestment + data[0].initialInvestment}</td> {/* initial investment +annual investments * year */}
       </tr>
     </>)
 }
@@ -39,7 +40,8 @@ export function TableList(props) {
           <td>Germany</td>
           <td>Germany</td>
         </tr> */}
-        <Test data={props.data} />
+
+        <TableRows data={props.data} />
       </tbody>
     </table>
   </>;

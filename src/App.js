@@ -13,9 +13,9 @@ function App() {
     console.log(dataFromChild, "data from child");
 
     const calculatedData = calculateInvestmentResults(dataFromChild)
-    // const formattedData = calculatedData.forEach(el => {
-    //   el.initialInvestment = dataFromChild.initialInvestment
-    // })
+    calculatedData.forEach(el => {
+      el.initialInvestment = dataFromChild.initialInvestment
+    })
 
     console.log(calculatedData)
     // console.log("howdy", formattedData)
