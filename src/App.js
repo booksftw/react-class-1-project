@@ -9,17 +9,17 @@ import { calculateInvestmentResults } from "./util/investment";
 function App() {
   const [listData, setListData] = useState({});
 
-  const dataFromForm = (data) => {
-    console.log(data, "data from child");
-    const y = {
-      "initialInvestment": 100000,
-      "annualInvestment": 120000,
-      "expectedReturn": 10,
-      "duration": 5
-    }
-    const x = calculateInvestmentResults(y)
-    console.log("howdy", x)
-    setListData(data)
+  const dataFromForm = (dataFromChild) => {
+    console.log(dataFromChild, "data from child");
+
+    const calculatedData = calculateInvestmentResults(dataFromChild)
+    // const formattedData = calculatedData.forEach(el => {
+    //   el.initialInvestment = dataFromChild.initialInvestment
+    // })
+
+    console.log(calculatedData)
+    // console.log("howdy", formattedData)
+    setListData(calculatedData)
   };
 
   return (

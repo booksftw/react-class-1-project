@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 
-function Test() {
+function Test({ data }) {
 
-  return (<><h1>Test</h1></>)
+  return (
+    <>
+      <tr>
+        <td>{data[0].year}</td>
+        <td>{data[0].valueEndOfYear}</td>
+        <td>{data[0].interest}</td>
+        <td>{data[0].interest}</td>
+        <td>{data[0].annualInvestment}</td>
+      </tr>
+    </>)
 }
 
 export function TableList(props) {
@@ -23,13 +32,14 @@ export function TableList(props) {
           <th>total earned</th>
           <th>Total amount invested</th>
         </tr>
-        <tr>
+        {/* <tr>
           <td>1</td>
           <td>Alfreds Futterkiste</td>
           <td>Maria Anders</td>
           <td>Germany</td>
           <td>Germany</td>
-        </tr>
+        </tr> */}
+        <Test data={props.data} />
       </tbody>
     </table>
   </>;
