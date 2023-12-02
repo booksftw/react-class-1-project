@@ -2,17 +2,40 @@ import React, { useState } from "react";
 
 function TableRows({ data }) {
   const dataIsAvailable = data.length > 0 // false
+  let totalEarned = 0
 
-  return (
-    <>
-      <tr>
-        <td>{dataIsAvailable && data[0].year}</td> {/* Year Correct  */}
-        <td>{dataIsAvailable && data[0].valueEndOfYear}</td> {/* Value end of year Correct */}
-        <td>{dataIsAvailable && data[0].interest}</td> {/*Interest Correct */}
-        <td>{dataIsAvailable && data[0].interest}</td> {/* total earned all interest added up */}
-        <td>{dataIsAvailable && data[0].annualInvestment + data[0].initialInvestment}</td> {/* initial investment +annual investments * year */}
-      </tr>
-    </>)
+  if (dataIsAvailable) {
+    const dataValues = data.map(d => {
+      totalEarned += d.interest
+      return (
+        <>
+          <tr>
+            <td>{d.year}</td>
+            <td>{d.valueEndOfYear}</td>
+            <td>{d.interest}</td>
+            <td>{totalEarned}</td>
+            <td>{d.initialInvestment + (d.annualInvestment * d.year)}</td>
+          </tr>
+        </>
+      )
+    })
+
+    return (
+      <>
+        {dataValues}
+      </>)
+
+  }
+  // return (
+  //   <>
+  //     <tr>
+  //       <td>{dataIsAvailable && data[0].year}</td> {/* Year Correct  */}
+  //       <td>{dataIsAvailable && data[0].valueEndOfYear}</td> {/* Value end of year Correct */}
+  //       <td>{dataIsAvailable && data[0].interest}</td> {/*Interest Correct */}
+  //       <td>{dataIsAvailable && data[0].interest}</td> {/* total earned all interest added up */}
+  //       <td>{dataIsAvailable && data[0].annualInvestment + data[0].initialInvestment}</td> {/* initial investment +annual investments * year */}
+  //     </tr>
+  //   </>)
 }
 
 export function TableList(props) {
